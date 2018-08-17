@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180817161757) do
+ActiveRecord::Schema.define(version: 20180817201236) do
 
   create_table "appellations", force: :cascade do |t|
     t.string "name"
     t.string "tier"
     t.string "region"
     t.integer "country_id"
-    t.integer "producer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +28,8 @@ ActiveRecord::Schema.define(version: 20180817161757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "category"
+    t.integer "producer_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -42,11 +43,12 @@ ActiveRecord::Schema.define(version: 20180817161757) do
     t.date "established"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "appellation_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
