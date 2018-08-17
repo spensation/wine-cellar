@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  country_of_origin: MyString
+  appellation_id: 1
+
+two:
+  name: MyString
+  country_of_origin: MyString
+  appellation_id: 1
