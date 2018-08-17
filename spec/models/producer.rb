@@ -26,6 +26,19 @@ describe Producer do
 	end
 
 	it 'belongs to a country through an appellation' do
+		france = Country.create(:name => 'France')
+		languedoc = Appellation.create(
+			:name => 'Languedoc Picpoul de Pinet',
+			:tier => 'AOC',
+			:region => 'Languedoc-Rousillion',
+			:country_id => france.id
+			)
+		pro = Producer.create(:name => 'Hugues Beauvignac', :established => 1985, :appellation_id => languedoc.id)
+
+		updated_france = Country.find_by(:name => 'France')
+
+		expect(pro.country).to eq(updated_france)
+		expect(updated_france.producers).to include(pro)
 	end
 
 end

@@ -11,7 +11,14 @@ describe User do
 
 	it 'has many bottles' do
 		jacques = User.create(:username => 'jacques', :password_digest => 'secret')
-		hugues_beauvignac = Producer.create(:name => 'Hugues Beauvignac', :established => 1984)
+		france = Country.create(:name => 'France')
+		languedoc = Appellation.create(
+			:name => 'Languedoc Picpoul de Pinet',
+			:tier => 'AOC',
+			:region => 'Languedoc-Rousillion',
+			:country_id => france.id
+			)
+		hugues_beauvignac = Producer.create(:name => 'Hugues Beauvignac', :established => 1984, :appellation_id => languedoc.id)
 		picpoul_de_pinet = Bottle.create(
 			:name => 'Picpoul de Pinet',
 			:vintage => 2016,
