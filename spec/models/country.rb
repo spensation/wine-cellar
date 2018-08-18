@@ -11,7 +11,7 @@ describe Country do
 	it 'has many appellations' do
 		france = Country.create(:name => 'France')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Rousillion',
 			:country_id => france.id
@@ -32,7 +32,7 @@ describe Country do
 	it 'has many producers through appellations' do
 		france = Country.create(:name => 'France')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Rousillion',
 			:country_id => france.id

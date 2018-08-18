@@ -13,7 +13,7 @@ describe User do
 		jacques = User.create(:username => 'jacques', :password_digest => 'secret')
 		france = Country.create(:name => 'France')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Rousillion',
 			:country_id => france.id

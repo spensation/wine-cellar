@@ -6,7 +6,7 @@ describe Bottle do
 		france = Country.create(:name => 'France')
 		yves = User.create(:username => 'yves', :password_digest => 'winesnob')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Roussillion',
 			:country_id => france.id
@@ -44,7 +44,7 @@ describe Bottle do
 		france = Country.create(:name => 'France')
 		yves = User.create(:username => 'yves', :password_digest => 'winesnob')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Roussillion',
 			:country_id => france.id
@@ -74,7 +74,7 @@ describe Bottle do
 		france = Country.create(:name => 'France')
 		yves = User.create(:username => 'yves', :password_digest => 'winesnob')
 		languedoc = Appellation.create(
-			:name => 'Languedoc Picpoul de Pinet',
+			:name => 'Languedoc',
 			:tier => 'AOC',
 			:region => 'Languedoc-Roussillion',
 			:country_id => france.id
