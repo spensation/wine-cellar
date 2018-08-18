@@ -41,4 +41,35 @@ describe Producer do
 		expect(updated_france.producers).to include(pro)
 	end
 
+	it 'has many bottles' do
+		france = Country.create(:name => 'France')
+		yves = User.create(:username => 'yves', :password_digest => 'winesnob')
+		languedoc = Appellation.create(
+			:name => 'Languedoc',
+			:tier => 'AOC',
+			:region => 'Languedoc-Rousillion',
+			:country_id => france.id
+			)
+		luc_pirlet = Producer.create(:name => 'Luc Pirlet', :established => 1985, :appellation_id => languedoc.id)
+		luc_pirlet_cabernet_sauvignon = Bottle.create(
+			:name => 'Luc Pirlet Cabernet Sauvignon',
+			:vintage => 2014,
+			:category => 'red',
+			:price => 8.99,
+			:producer_id => luc_pirlet.id,
+			:user_id => yves.id
+			)
+		luc_pirlet_chardonnay_unoaked = Bottle.create(
+			:name => 'Luc Pirlet Chardonnay Unoaked',
+			:vintage => 2017,
+			:category => 'white',
+			:price => 8.99,
+			:producer_id => luc_pirlet.id,
+			:user_id => yves.id
+			)
+		updated_luc_pirlet = Producer.find_by(:name => 'Luc Pirlet')
+
+		expect(updated_luc_pirlet.bottles).to include(luc_pirlet_cabernet_sauvignon)
+		expect(updated_luc_pirlet.bottles).to include(luc_pirlet_chardonnay_unoaked)
+	end
 end
