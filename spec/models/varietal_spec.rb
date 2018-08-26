@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Varietal do
 	
 	it 'has a name, country_of_origin and an appellation_id' do

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Producer do 
 	
 	it 'has a name and an established date' do
@@ -43,7 +41,7 @@ describe Producer do
 
 	it 'has many bottles' do
 		france = Country.create(:name => 'France')
-		yves = User.create(:username => 'yves', :password_digest => 'winesnob')
+		yves = User.create(:username => 'yves3', :email => 'yves3@free.fr', :password_digest => 'winesnob')
 		languedoc = Appellation.create(
 			:name => 'Languedoc',
 			:tier => 'AOC',
