@@ -4,4 +4,5 @@ class Producer < ApplicationRecord
 
 	delegate :country, :to => :appellation, :allow_nil => true
 	# allows producer.appellation_country
+	validates :name, :established, :presence => true
 end
