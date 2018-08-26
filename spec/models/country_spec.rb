@@ -1,51 +1,34 @@
 describe Country do
 
-	before do 
-		@country = FactoryBot.create(:country_with_producers)
-	end
-
-
-	
-	it 'has a name' do
-		@country.name.should_not == nil
-	end
-
-	# it 'has many appellations' do
-	# 	france = Country.create(:name => 'France')
-	# 	languedoc = Appellation.create(
-	# 		:name => 'Languedoc',
-	# 		:tier => 'AOC',
-	# 		:region => 'Languedoc-Rousillion',
-	# 		:country_id => france.id
-	# 		)
-	# 	cotes_du_rhone = Appellation.create(
-	# 		:name => 'Cotes du Rhone',
-	# 		:tier => 'AOC',
-	# 		:region => 'Rhone',
-	# 		:country_id => france.id
-	# 		)
-
-	# 	updated_france = Country.find_by(:name => 'France')
-
-	# 	expect(updated_france.appellations).to include(languedoc)
-	# 	expect(updated_france.appellations).to include(cotes_du_rhone)
+	# before do 
+	# 	@country = FactoryBot.create(:country, :country_with_producers)
 	# end
 
-	# it 'has many producers through appellations' do
-	# 	france = Country.create(:name => 'France')
-	# 	languedoc = Appellation.create(
-	# 		:name => 'Languedoc',
-	# 		:tier => 'AOC',
-	# 		:region => 'Languedoc-Rousillion',
-	# 		:country_id => france.id
-	# 		)
-	# 	hugues_beauvignac = Producer.create(:name => 'Hugues Beauvignac', :established => 1985, :appellation_id => languedoc.id)
-	# 	omarine = Producer.create(:name => 'Omarine', :established => 1973, :appellation_id => languedoc.id)
 
-	# 	updated_france = Country.find_by(:name => 'France')
+	describe "validations" do
+		it 'is valid with a name' do
+			country = FactoryBot.build(:country)
+			expect(country).to be_valid
+			# @country.name.should_not == nil
+		end
 
-	# 	expect(updated_france.producers).to include(hugues_beauvignac)
-	# 	expect(updated_france.producers).to include(omarine)
-	# end
+		it "is invalid without a name" do
+			country = FactoryBot.build(:country, :name => nil)
+			country.valid?
+			expect(country.errors[:name]).to include("can't be blank")
+		end
+	end
 
+	describe "associations" do
+
+		it 'has many appellations' do
+			assc = described_class.reflect_on_association(:appellations)
+			expect(assc.macro).to eq :has_many
+		 end
+
+		it 'has many producers through appellations' do
+			assc = described_class.reflect_on_association(:producers)
+			expect(assc.macro).to eq :has_many 
+	    end
+	end 
 end
