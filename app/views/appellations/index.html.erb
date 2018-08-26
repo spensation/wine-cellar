@@ -1,0 +1,9 @@
+<h1>All the Appellations</h1>
+<ul>
+	<% @appellations.each do |appellation| %>
+		<li><%= appellation.name %></li>
+		<li><%= appellation.tier %></li>
+		<li><%= appellation.region %> </li>
+	<% end %>
+</ul>
+

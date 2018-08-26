@@ -3,7 +3,6 @@ FactoryBot.define do
 	factory :country do |f|
 		f.name { Faker::Address.country }
 
-
 		factory :country_with_producers do
 			transient do
 				producers_count 5  
