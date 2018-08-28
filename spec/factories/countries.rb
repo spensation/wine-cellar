@@ -4,7 +4,7 @@ FactoryBot.define do
 		f.name { Faker::Address.country }
 
 		trait :country_with_producers do
-			ignore do
+			transient do
 				producers_count 5  
 			end
 

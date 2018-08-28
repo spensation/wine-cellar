@@ -11,4 +11,7 @@ describe Appellation do
 		it { should belong_to(:country) }
 	end
 	
+	it "has a valid factory" do
+		expect(build(:appellation)).to be_valid
+	end
 end
