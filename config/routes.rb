@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'bottles#index'
+  root 'welcome#index'
 
   get     '/login',   to: 'sessions#new'
   post    '/login',   to: 'seesions#create'
