@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get     '/login',   to: 'sessions#new'
+  get     '/sign_up',  to: 'users#new'
   post    '/login',   to: 'seesions#create'
   delete  '/logout',  to: 'sessions#destroy'
   
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
 
   
  
-  resources :users, only: [:show] do 
+  resources :users, only: [:show, :new, :create] do 
   	resources :bottles, only: [:show, :index]
   end
 

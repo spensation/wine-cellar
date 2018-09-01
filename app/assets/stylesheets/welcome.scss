@@ -5,4 +5,14 @@
 body {
 	background: url(vines.jpg);
 	background-size: cover;
+	
+}
+
+.landing {
+	width: 70%;
+	margin: auto;
+	margin-top: 20vh;
+	background: rgba(0, 0, 180, 0.1);
+	border-radius: 15px;
+	color: hsl(80, 60%, 30%);
 }
