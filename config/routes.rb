@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get     '/login',   to: 'sessions#new'
-  get     '/sign_up',  to: 'users#new'
-  post    '/login',   to: 'seesions#create'
-  delete  '/logout',  to: 'sessions#destroy'
+  post    '/login',   to: 'sessions#create'
+  get     '/logout',  to: 'sessions#destroy'
+  get     '/signup',  to: 'users#new'
+  post    '/users',   to: 'users#create'
   
   resources :countries, only: [:show] do 
   	resources :appellations, only: [:show, :index]
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
 
   
  
-  resources :users, only: [:show, :new, :create] do 
+  resources :users, only: [:index, :show, :new, :create] do 
   	resources :bottles, only: [:show, :index]
   end
 
