@@ -1,0 +1,10 @@
+<h1><%= @producer.name %></h1>
+<h2><%= link_to @producer.country.name, country_path(@producer.country) %></h2>
+<h2><%= @producer.appellation.name %></h2>
+<h3><%= @producer.appellation.tier %></h3>
+<h3><%= @producer.appellation.region %></h3>
+<ul>
+	<% @producer.bottles.each do |bottle| %>
+	<li><%=bottle.name%></li>
+</ul>
+<% end %>
