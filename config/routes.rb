@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :appellations, only: [:index, :show, :new, :create, :edit, :update]
 
-  resources :countries, only: [:show] do 
+  resources :countries, only: [:index, :show] do 
   	resources :producers, only: [:show, :index]
   end
 

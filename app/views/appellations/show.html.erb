@@ -1,1 +1,6 @@
-<h1><%=@appellation.name %></h1>
+<h1><%= @appellation.name %></h1>
+<% @appellation.producers.each do |producer| %>
+	<ul>
+		<li> <%= link_to producer.name, producer_path(producer) %></li>
+	</ul>
+<% end %>

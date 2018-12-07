@@ -3,8 +3,16 @@
 <h2><%= @producer.appellation.name %></h2>
 <h3><%= @producer.appellation.tier %></h3>
 <h3><%= @producer.appellation.region %></h3>
-<ul>
+<table>
 	<% @producer.bottles.each do |bottle| %>
-	<li><%=bottle.name%></li>
-</ul>
+	<tr>
+		<th>Name</th>
+		<th>Year</th>
+		<th>Price</th>
+	<tr>
+		<td><%=bottle.name%></td>
+		<td><%=bottle.vintage%></td>
+		<td><%=bottle.price%></td>
+	</tr>
+</table>
 <% end %>
