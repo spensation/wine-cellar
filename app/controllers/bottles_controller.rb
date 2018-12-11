@@ -21,7 +21,7 @@ class BottlesController < ApplicationController
 		user = current_user
 		@bottle = Bottle.create(bottle_params)
 		if @bottle.save
-			redirect_to "/users/user_id/bottles"
+			redirect_to user_path(user)
 		else
 			redirect_to root_path
 		end
