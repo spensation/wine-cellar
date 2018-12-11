@@ -1,1 +1,27 @@
- <% if logged_in? -%>Welcome, <%= current_user.name %><% end -%>
+ <% if logged_in? %> <h1> Welcome, <%= current_user.username%>!</h1>
+ <%else%>
+ <%end%>
+ <% current_user.bottles.each do |user_bottle| %>
+    <li><%= user_bottle.name%> || <%= user_bottle.vintage %>  || $<%= user_bottle.price %></li>
+    
+<% end %>
+
+<br>
+<br>
+<br>
+<hr>
+
+
+
+<form method = "POST" action="/users/<%=@user.id%>/bottles">
+   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+   <input type="text" name="name"  placeholder="name"><br>
+   <input type="number" name="price" placeholder="$12.99"><br>
+   <input type="number" name="vintage" placeholder="2012"><br>
+   <input type="radio" name="category" value="Red">Red<br>
+   <input type="radio" name="category" value="White">White<br>
+   <input type="radio" name="category" value="Rosé">Rosé<br>
+   <input type="hidden" name="user_id" value="<%=@user.id%>">
+   
+   <input type="submit">
+</form>

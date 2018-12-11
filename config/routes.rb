@@ -22,10 +22,8 @@ Rails.application.routes.draw do
   
  
   resources :users, only: [:index, :show, :new, :create] do 
-  	resources :bottles, only: [:show, :index]
+  	resources :bottles, only: [:show, :index, :new, :create]
   end
-
-  resources :bottles, only: [:index, :show, :new, :create, :edit, :update]
 
   resources :varietals
 
