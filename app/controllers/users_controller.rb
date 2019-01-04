@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		bottle = @user.bottles.build
 	end
 
 	def index
@@ -22,6 +23,8 @@ class UsersController < ApplicationController
 
 	def show 
 		@user = User.find(params[:id])
+		@bottle = Bottle.new
+
 	end
 
 	private

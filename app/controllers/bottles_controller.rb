@@ -14,14 +14,14 @@ class BottlesController < ApplicationController
 	end
 
 	def new
-		@bottle = Bottle.new(:user_id => params[:user_id])
+		@bottle = Bottle.new
 	end
 
 	def create
-		user = current_user
+		@user = User.find(params[:user_id])
 		@bottle = Bottle.create(bottle_params)
 		if @bottle.save
-			redirect_to user_path(user)
+			redirect_to user_path(@user)
 		else
 			redirect_to root_path
 		end
@@ -48,6 +48,6 @@ class BottlesController < ApplicationController
 	private 
 
 	def bottle_params
-		params.permit(:name, :price, :user_id, :category, :vintage)
+		params.require(:bottle).permit(:name, :price, :user_id, :category, :vintage)
 	end
 end

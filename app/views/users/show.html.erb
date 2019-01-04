@@ -2,7 +2,7 @@
  <%else%>
  <%end%>
  <% current_user.bottles.each do |user_bottle| %>
-    <li><%= user_bottle.name%> || <%= user_bottle.vintage %>  || $<%= user_bottle.price %></li>
+    <li><%= link_to user_bottle.name, user_bottle_path(@user, user_bottle) %> || <%= user_bottle.vintage %>  || $<%= user_bottle.price %></li>
     
 <% end %>
 
@@ -10,18 +10,26 @@
 <br>
 <br>
 <hr>
+<h3>Add a bottle to your collection:</h3>
+<%= form_for [@user, @bottle] do |f| %>
+   <%= f.text_field :name, :placeholder => 'Name' %><br>
+   <%= f.number_field :price, :placeholder => 'Price' %><br>
+   <%= f.number_field :vintage, :placeholder => 'Vintage' %><br>
+   <%= f.radio_button :category, 'red', :checked => true %>
+   <%= f.label :category_red, 'Red' %>
+   <%= f.radio_button :category, 'white' %>
+   <%= f.label :category_white, 'White' %>
+   <%= f.radio_button :category, 'rosé' %>
+   <%= f.label :category_rosé, 'Rosé' %>
+   <%= f.radio_button :category, 'sparkling' %>
+   <%= f.label :category_sparkling, 'Sparkling' %>
+   <%= f.hidden_field :user_id, :value => @user.id %><br>
+      <%= f.fields_for :producer, @bottle do |producer_field| %>
+         <%= producer_field.text_field :name, :placeholder => 'Producer' %>
+      <%end%>
+      <br>
+   <%= f.submit %>
+<% end %>
 
 
 
-<form method = "POST" action="/users/<%=@user.id%>/bottles">
-   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
-   <input type="text" name="name"  placeholder="name"><br>
-   <input type="number" name="price" placeholder="$12.99"><br>
-   <input type="number" name="vintage" placeholder="2012"><br>
-   <input type="radio" name="category" value="Red">Red<br>
-   <input type="radio" name="category" value="White">White<br>
-   <input type="radio" name="category" value="Rosé">Rosé<br>
-   <input type="hidden" name="user_id" value="<%=@user.id%>">
-   
-   <input type="submit">
-</form>
